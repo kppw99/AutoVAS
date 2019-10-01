@@ -1,0 +1,19 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /home/kevin/autoVAS/newJoern/joern/joern-cli/target/scala-2.12/joern-cli_2.12-0.1.0-SNAPSHOT-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io/shiftleft/joern/console/AmmoniteBridge.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-cli/src/main/scala/io/shiftleft/joern/console/AmmoniteBridge.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io/shiftleft/joern/CpgLoader.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-cli/src/main/scala/io/shiftleft/joern/CpgLoader.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	log4j2.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-cli/src/main/resources/log4j2.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	default.semantics[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-cli/src/main/resources/default.semantics[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io/shiftleft/joern/Cpg2Scpg.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-cli/src/main/scala/io/shiftleft/joern/Cpg2Scpg.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io/shiftleft/joern/JoernQuery.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-cli/src/main/scala/io/shiftleft/joern/JoernQuery.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io/shiftleft/joern/console/Console.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-cli/src/main/scala/io/shiftleft/joern/console/Console.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io/shiftleft/joern/JoernParse.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-cli/src/main/scala/io/shiftleft/joern/JoernParse.scala[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m

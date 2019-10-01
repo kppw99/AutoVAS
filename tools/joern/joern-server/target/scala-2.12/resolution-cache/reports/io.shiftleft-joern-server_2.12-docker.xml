@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="io.shiftleft"
+		module="joern-server_2.12"
+		revision="0.1.0-SNAPSHOT"
+		conf="docker"
+		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, container, linux, rpm, jetty, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20190911110104"/>
+	<dependencies>
+	</dependencies>
+</ivy-report>

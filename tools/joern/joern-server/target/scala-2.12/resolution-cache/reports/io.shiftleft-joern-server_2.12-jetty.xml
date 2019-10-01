@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="io.shiftleft"
+		module="joern-server_2.12"
+		revision="0.1.0-SNAPSHOT"
+		conf="jetty"
+		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, container, linux, rpm, jetty, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20190911110104"/>
+	<dependencies>
+		<module organisation="org.eclipse.jetty" name="jetty-runner">
+			<revision name="9.4.8.v20171121" status="release" pubdate="20171122070251" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="0">
+				<license name="Apache Software License - Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<license name="Eclipse Public License - Version 1.0" url="http://www.eclipse.org/org/documents/epl-v10.php"/>
+				<metadata-artifact status="no" details="" size="9393" time="0" location="/home/kevin/.ivy2/cache/org.eclipse.jetty/jetty-runner/ivy-9.4.8.v20171121.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner/9.4.8.v20171121/jetty-runner-9.4.8.v20171121.pom"/>
+				<caller organisation="io.shiftleft" name="joern-server_2.12" conf="jetty" rev="9.4.8.v20171121" rev-constraint-default="9.4.8.v20171121" rev-constraint-dynamic="9.4.8.v20171121" callerrev="0.1.0-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="jetty-runner" type="jar" ext="jar" status="no" details="" size="6913561" time="0" location="/home/kevin/.ivy2/cache/org.eclipse.jetty/jetty-runner/jars/jetty-runner-9.4.8.v20171121.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner/9.4.8.v20171121/jetty-runner-9.4.8.v20171121.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

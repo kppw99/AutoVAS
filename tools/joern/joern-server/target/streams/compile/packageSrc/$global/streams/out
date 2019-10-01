@@ -1,0 +1,11 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /home/kevin/autoVAS/newJoern/joern/joern-server/target/scala-2.12/joern-server_2.12-0.1.0-SNAPSHOT-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	logback.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-server/src/main/resources/logback.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io/shiftleft/joern/server/JoernServerMain.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-server/src/main/scala/io/shiftleft/joern/server/JoernServerMain.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io/shiftleft/joern/server/JoernServerImpl.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-server/src/main/scala/io/shiftleft/joern/server/JoernServerImpl.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ScalatraBootstrap.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/kevin/autoVAS/newJoern/joern/joern-server/src/main/scala/ScalatraBootstrap.scala[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m
