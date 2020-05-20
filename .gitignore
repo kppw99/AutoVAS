@@ -1,3 +1,4 @@
 *.pyc
 *.html
 *.coverage
+__pycache__
