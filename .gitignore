@@ -2,3 +2,9 @@
 *.html
 *.coverage
 __pycache__
+*SliceResult*
+resource/dirList.txt
+resource/targetList.txt
+resource/error.txt
+resource/snippet.txt
+resource/result.txt
