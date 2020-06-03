@@ -9,4 +9,5 @@ resource/sard_error.txt
 resource/sard_snippet.txt
 resource/sard_result.txt
 tags
-venv
+venv/
+.idea/
