@@ -3,9 +3,9 @@
 *.coverage
 __pycache__
 *SliceResult*
-resource/dirList.txt
-resource/targetList.txt
-resource/error.txt
-resource/snippet.txt
-resource/result.txt
+resource/sard_dirList.txt
+resource/sard_targetList.txt
+resource/sard_error.txt
+resource/sard_snippet.txt
+resource/sard_result.txt
 tags
