@@ -8,6 +8,10 @@ resource/sard_targetList.txt
 resource/sard_error.txt
 resource/sard_snippet.txt
 resource/sard_result.txt
+resource/nvd_targetList.txt
+dataset/snippet/nvd_slicing_pointer.txt
+dataset/snippet/nvd_snippet_all.txt
+dataset/token/nvd_result.txt
 tags
 venv/
 .idea/
