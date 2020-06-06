@@ -1,7 +1,8 @@
+import os
 import datetime
 import numpy as np
 import pandas as pd
-from os.path import isfile
+from os.path import isfile, isdir
 import matplotlib.pyplot as plt
 
 from tensorflow.keras import regularizers
@@ -533,8 +534,14 @@ def print_hyperprameter():
     print('[-] Split(test, validation):', TEST_SPLIT, VALID_SPLIT)
     print('')
 
+def get_image_path():
+    img_path = os.getcwd() + '/image/'
+    if not isdir(img_path):
+        os.mkdir(img_path)
+    return img_path
+
 def create_accuracy_graph(reports, model_name, show=False):
-    dirpath = './image/'
+    dirpath = get_image_path()
     title = model_name + '_accuracy'
     filename = dirpath + datetime.datetime.now().strftime("%y%m%d_%H%M_") + title + '.png'
     accuracy = reports[model_name]['history'].history['accuracy']
@@ -550,7 +557,7 @@ def create_accuracy_graph(reports, model_name, show=False):
     plt.close()
 
 def create_loss_graph(reports, model_name, show=False):
-    dirpath = './image/'
+    dirpath = get_image_path()
     title = model_name + '_loss'
     filename = dirpath + datetime.datetime.now().strftime("%y%m%d_%H%M_") + title + '.png'
     loss = reports[model_name]['history'].history['loss']
@@ -566,7 +573,7 @@ def create_loss_graph(reports, model_name, show=False):
     plt.close()
 
 def create_compare_accuracy_graph(reports, show=False):
-    dirpath = './image/'
+    dirpath = get_image_path()
     filename = dirpath + datetime.datetime.now().strftime("%y%m%d_%H%M_") + 'accuracy_compare.png'
     plt.title('Compare model_accuracy')
     plt.ylabel('accuracy')
@@ -580,7 +587,7 @@ def create_compare_accuracy_graph(reports, show=False):
     plt.close()
 
 def create_compare_loss_graph(reports, show=False):
-    dirpath = './image/'
+    dirpath = get_image_path()
     filename = dirpath + datetime.datetime.now().strftime("%y%m%d_%H%M_") + 'loss_compare.png'
     plt.title('Compare model_loss')
     plt.ylabel('loss')
