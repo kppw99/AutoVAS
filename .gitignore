@@ -12,6 +12,13 @@ resource/nvd_targetList.txt
 dataset/snippet/nvd_slicing_pointer.txt
 dataset/snippet/nvd_snippet_all.txt
 dataset/token/nvd_result.txt
+src/model/image/*
+src/model/backup/all_corpus.txt
+src/model/backup/all_dataset.txt
+src/model/backup/nvd_corpus.txt
+src/model/backup/nvd_dataset.txt
+src/model/backup/all_w2v.model
+src/model/backup/nvd_w2v.model
 tags
 venv/
 .idea/
