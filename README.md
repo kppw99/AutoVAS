@@ -38,3 +38,9 @@ As described in below table, we detect nine vulnerabilities. Among them, six vul
 |mpc|stack buffer overflow|silent-patch|b31e02e427f55d4ce69c33ed9936a1b396628440|
 |mpc|heap buffer overflow|silent-patch|b31e02e427f55d4ce69c33ed9936a1b396628440|
 |expat|heap buffer overflow|(unknown) CVE-2019-15903|v2.2.8|
+
+## About
+This program is authored and maintained by **Sanghoon(Kevin) Jeon**.
+> Email: kppw99@gmail.com
+
+> GitHub[@kppw99](https://github.com/kppw99/autoVAS)
