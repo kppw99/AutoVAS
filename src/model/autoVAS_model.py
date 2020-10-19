@@ -18,6 +18,8 @@ from keras.layers.normalization import BatchNormalization
 from keras.layers import Dense, LSTM, GRU, Embedding, Dropout, Activation, Bidirectional
 
 from imblearn.combine import SMOTEENN
+from imblearn.over_sampling import SMOTE
+from sklearn.preprocessing import OneHotEncoder
 
 from tqdm import tqdm
 from pprint import pprint
@@ -36,16 +38,16 @@ _SNIPPET_FILES = [
     FILEPATH + 'sard_result_6001_7000.txt',
     FILEPATH + 'sard_result_7001_8000.txt',
     FILEPATH + 'sard_result_8001_9283.txt',
-    # './SARD/result.txt'
     FILEPATH + 'nvd_result.txt'
 ]
-_DATASET_FILE = 'sard_dataset.txt'
-_CORPUS_FILE = 'sard_corpus.txt'
-_W2V_MODEL_FILE = 'sard_w2v.model'
-_D2V_MODEL_FILE = 'sard_d2v.model'
-_S2V_MODEL_FILE = 'sard_s2v.model'
-_FT_MODEL_FILE = 'sard_ft.model'
-_GV_MODEL_FILE = 'sard_gv.model'
+
+_DATASET_FILE   = 'dataset.txt'
+_CORPUS_FILE    = 'corpus.txt'
+_W2V_MODEL_FILE = 'w2v.model'
+_D2V_MODEL_FILE = 'd2v.model'
+_S2V_MODEL_FILE = 's2v.model'
+_FT_MODEL_FILE  = 'ft.model'
+_GV_MODEL_FILE  = 'gv.model'
 
 # for Embedding
 CLASS_NUM = 2
@@ -59,7 +61,7 @@ TEST_SPLIT = 0.3
 VALID_SPLIT = 0.2
 K_FOLD = 5
 BATCH_SIZE = 256
-STATEFUL = True
+STATEFUL = False
 HIDDEN_DIM = EMBEDDING_DIM
 EPOCH_SIZE = 200
 
@@ -216,7 +218,6 @@ def _create_embedding_matrix(word_index, embed_opt='w2v'):
             if word in word2vec.vocab:
                 embedding_matrix[i] = word2vec.word_vec(word)
                 cnt += 1
-        print(cnt)
     elif embed_opt == 'gv':
         if not isfile(_GV_MODEL_FILE): return
         word2vec = KeyedVectors.load_word2vec_format(_GV_MODEL_FILE)
@@ -265,6 +266,12 @@ def load_snippet_data(embed_opt='w2v'):
     df.loc[df['label'] == 2, 'label'] = 1
     y = to_categorical(df['label'], CLASS_NUM)
     tr_X, tr_y, te_X, te_y = _split_data(X, y, TEST_SPLIT, split_shuffle=True)
+    print('[-] Start to oversampling using SMOTEENN')
+    sme = SMOTEENN(random_state=42)
+    tr_X, tr_y = sme.fit_resample(tr_X, tr_y)
+    enc = OneHotEncoder()
+    enc.fit(tr_y)
+    tr_y = enc.transform(tr_y).toarray()
     embedding_matrix = _create_embedding_matrix(tokenizer.word_index, embed_opt)
     print('[*] Done!!! -> load snippet data\n')
     return (tr_X, tr_y), (te_X, te_y), embedding_matrix
@@ -311,7 +318,7 @@ def lstm(embedding_matrix):
     model.add(Activation('relu'))
     model.add(Dropout(DROPOUT_RATE))
     model.add(Dense(CLASS_NUM, activation='softmax'))
-    adam = Adam(lr=0.001)
+    adam = Adamax(lr=0.001)
     model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
     model.summary()
     print('[*] Done!!! -> build lstm model\n')
@@ -325,7 +332,7 @@ def blstm(embedding_matrix):
     model.add(Activation('relu'))
     model.add(Dropout(DROPOUT_RATE))
     model.add(Dense(CLASS_NUM, activation='softmax'))
-    adam = Adam(lr=0.001)
+    adam = Adamax(lr=0.001)
     model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
     model.summary()
     print('[*] Done!!! -> build bidirectional lstm model\n')
@@ -350,7 +357,7 @@ def multi_lstm(embedding_matrix):
     model.add(Activation('relu'))
     model.add(Dropout(DROPOUT_RATE))
     model.add(Dense(CLASS_NUM, activation='softmax'))
-    adam = Adam(lr=0.001)
+    adam = Adamax(lr=0.001)
     model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
     model.summary()
     print('[*] Done!!! -> build multi-layer lstm model\n')
@@ -375,7 +382,7 @@ def multi_blstm(embedding_matrix):
     model.add(Activation('relu'))
     model.add(Dropout(DROPOUT_RATE))
     model.add(Dense(CLASS_NUM, activation='softmax'))
-    adam = Adam(lr=0.001)
+    adam = Adamax(lr=0.001)
     model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
     model.summary()
     print('[*] Done!!! -> build multi-layer bidirectional lstm model\n')
@@ -389,7 +396,7 @@ def gru(embedding_matrix):
     model.add(Activation('relu'))
     model.add(Dropout(DROPOUT_RATE))
     model.add(Dense(CLASS_NUM, activation='softmax'))
-    adam = Adam(lr=0.001)
+    adam = Adamax(lr=0.001)
     model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
     model.summary()
     print('[*] Done!!! -> build lstm model\n')
@@ -403,7 +410,7 @@ def bgru(embedding_matrix):
     model.add(Activation('relu'))
     model.add(Dropout(DROPOUT_RATE))
     model.add(Dense(CLASS_NUM, activation='softmax'))
-    adam = Adam(lr=0.001)
+    adam = Adamax(lr=0.001)
     model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
     model.summary()
     print('[*] Done!!! -> build bidirectional lstm model\n')
@@ -428,7 +435,7 @@ def multi_gru(embedding_matrix):
     model.add(Activation('relu'))
     model.add(Dropout(DROPOUT_RATE))
     model.add(Dense(CLASS_NUM, activation='softmax'))
-    adam = Adam(lr=0.001)
+    adam = Adamax(lr=0.001)
     model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
     model.summary()
     print('[*] Done!!! -> build multi-layer lstm model\n')
@@ -453,7 +460,7 @@ def multi_bgru(embedding_matrix):
     model.add(Activation('relu'))
     model.add(Dropout(DROPOUT_RATE))
     model.add(Dense(CLASS_NUM, activation='softmax'))
-    adam = Adam(lr=0.001)
+    adam = Adamax(lr=0.001)
     model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
     model.summary()
     print('[*] Done!!! -> build multi-layer bidirectional lstm model\n')
@@ -465,9 +472,6 @@ def fit_and_result(model, tr_X, tr_y, te_X, te_y):
         early_stopping = EarlyStopping(monitor='loss', patience=10)
     else:
         early_stopping = None
-
-    sme = SMOTEENN(random_state=42)
-    tr_X, tr_y = sme.fit_resample(tr_X, tr_y)
 
     hist = model.fit(tr_X, tr_y, validation_split=VALID_SPLIT, epochs=EPOCH_SIZE,
                      batch_size=BATCH_SIZE, shuffle=False, callbacks=[early_stopping])
@@ -481,8 +485,12 @@ def kfold_cross_validation(model, X, y, kf):
     result = list()
     early_stopping = EarlyStopping(monitor='loss', patience=10)
     for train, valid in kf.split(X, y):
+        print('[-] Start to oversampling using SMOTEENN')
         sme = SMOTEENN(random_state=42)
         tr_X, tr_y = sme.fit_resample(X[train], y[train])
+        enc = OneHotEncoder()
+        enc.fit(tr_y)
+        tr_y = enc.transform(tr_y).toarray()
         model.fit(tr_X, tr_y, epochs=EPOCH_SIZE, batch_size=BATCH_SIZE,
                   shuffle=False, callbacks=[early_stopping])
         temp = '%.4f' % (model.evaluate(X[valid], y[valid], batch_size=BATCH_SIZE)[1])
