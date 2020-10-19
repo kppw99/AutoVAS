@@ -6,20 +6,22 @@ However, existing methods target only some types of security vulnerabilities, or
 The proposed technique achieved an False Positive Rate (FPR) of 1.88\, an False Negative Rate (FNR) of 3.62\%, and an F1-score of 96.11\%, and detected nine vulnerabilities by applying the technique to seven open-source projects. Six vulnerabilities were known Common Vulnerabilities and Exposures (CVE), and three of them were not registered in the NVD but were silently patched by the vendor in the next version of their software. One of nine vulnerabilities was registered in the CVE.
 
 ## Prerequisite
-For NVD Dataset
+***For NVD Dataset***
 - [Python3](https://www.python.org/downloads/), [Java runtime 8](http://openjdk.java.net/install/), [sbt (Scala build tool)](https://www.scala-sbt.org/)
 - [Joern](https://github.com/ShiftLeftSecurity/joern) ([documents](https://joern.io/docs/))
 - cpgclientlib library for using cpg ($ pip install cpgclientlib)
 
-For SARD Dataset
+***For SARD Dataset***
 - [LLVM-Slicing](https://github.com/zhangyz/llvm-slicing)
 
-For Evaluation
+***For Evaluation***
 - HTMLTestRunner for making test reports ($ pip install HTMLTestRunner)
 - coverage for checking the test coverage ($ pip install coverage)
 
 ## Description of directory
-- Dataset: Original source code of dataset, snippet files, tokenizing file  
-- Resource: Slicing criterion file
-- src: Main source code of AutoVAS. The src direction has model and preprocessing folder.
-- tool: Utility files for AutoVAS such as joern, llvm-slicing
+- ***Dataset***: Original source code of dataset, snippet files, tokenizing file  
+- ***Resource***: Slicing criterion file
+- ***src***: Main source code of AutoVAS. The src direction has model and preprocessing folder.
+- ***tool***: Utility files for AutoVAS such as joern, llvm-slicing
+
+## Vulnerabilities
