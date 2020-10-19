@@ -19,6 +19,10 @@ src/model/backup/nvd_corpus.txt
 src/model/backup/nvd_dataset.txt
 src/model/backup/all_w2v.model
 src/model/backup/nvd_w2v.model
+src/model/sard_corpus.txt
+src/model/sard_dataset.txt
+src/model/sard_gv.model
+src/model/sard_w2v.model
 tags
 venv/
 .idea/

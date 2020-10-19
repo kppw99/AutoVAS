@@ -17,6 +17,8 @@ from keras.preprocessing.sequence import pad_sequences
 from keras.layers.normalization import BatchNormalization
 from keras.layers import Dense, LSTM, GRU, Embedding, Dropout, Activation, Bidirectional
 
+from imblearn.combine import SMOTEENN
+
 from tqdm import tqdm
 from pprint import pprint
 from gensim.models import Word2Vec, FastText, KeyedVectors
@@ -35,6 +37,7 @@ _SNIPPET_FILES = [
     FILEPATH + 'sard_result_7001_8000.txt',
     FILEPATH + 'sard_result_8001_9283.txt',
     # './SARD/result.txt'
+    FILEPATH + 'nvd_result.txt'
 ]
 _DATASET_FILE = 'sard_dataset.txt'
 _CORPUS_FILE = 'sard_corpus.txt'
@@ -246,29 +249,6 @@ def _create_embedding_matrix(word_index, embed_opt='w2v'):
                 embedding_matrix[i] = sent2vec.wv.word_vec(word)
     return embedding_matrix
 
-# def _create_embedding_matrix_(word_index, embed_opt='w2v'):
-#     print('[#] Create embedding matrix')
-#     global embedding_matrix
-#     words_size = min(MAX_WORDS, len(word_index))+1
-#     embedding_matrix = np.zeros((words_size, EMBEDDING_DIM))
-#     if embed_opt == 'w2v':
-#         if not isfile(_W2V_MODEL_FILE): _create_w2v_model()
-#         word2vec = KeyedVectors.load_word2vec_format(_W2V_MODEL_FILE)
-#         for word, i in word_index.items():
-#             if word in word2vec.vocab:
-#                 embedding_matrix[i] = word2vec.word_vec(word)
-#     elif embed_opt == 'd2v':
-#         if not isfile(_D2V_MODEL_FILE): _create_d2v_model()
-#         doc2vec = Doc2Vec.load(_D2V_MODEL_FILE)
-#         for word, i in word_index.items():
-#             if word in doc2vec.wv.vocab:
-#                 embedding_matrix[i] = doc2vec.wv.word_vec(word)
-#     elif embed_opt == 's2v':
-#         if not isfile(_S2V_MODEL_FILE): _create_s2v_model()
-#         sent2vec = Doc2Vec.load(_S2V_MODEL_FILE)
-#         for word, i in word_index.items():
-#             if word in sent2vec.wv.vocab:
-#                 embedding_matrix[i] = sent2vec.wv.word_vec(word)
 
 def load_snippet_data(embed_opt='w2v'):
     print('[*] Load snippet data')
@@ -289,23 +269,6 @@ def load_snippet_data(embed_opt='w2v'):
     print('[*] Done!!! -> load snippet data\n')
     return (tr_X, tr_y), (te_X, te_y), embedding_matrix
 
-# def load_snippet_data_(embed_opt='w2v'):
-#     print('[*] Load snippet data')
-#     if not isfile(_DATASET_FILE): _create_data()
-#     df = pd.read_csv(_DATASET_FILE, sep='\t', usecols=['label', 'snippet'],
-#                      dtype={'label': int, 'snippet': str})
-#     df.fillna('', inplace=True)
-#     print('[-] tokenizing ...')
-#     tokenizer = Tokenizer(num_words=MAX_WORDS)
-#     tokenizer.fit_on_texts(df['snippet'])
-#     snippet = tokenizer.texts_to_sequences(df['snippet'])
-#     print('[-] post zero padding ... (size: %d)' % SNIPPET_SIZE)
-#     X = pad_sequences(snippet, maxlen=SNIPPET_SIZE, padding='post')
-#     y = to_categorical(df['label'], CLASS_NUM)
-#     tr_X, tr_y, te_X, te_y = _split_data(X, y, TEST_SPLIT, split_shuffle=True)
-#     _create_embedding_matrix_(tokenizer.word_index, embed_opt)
-#     print('[*] Done!!! -> load snippet data\n')
-#     return (tr_X, tr_y), (te_X, te_y)
 
 def load_snippet_data_for_kfold(embed_opt='w2v'):
     print('[*] Load snippet data for K-fold cross validation')
@@ -325,8 +288,6 @@ def load_snippet_data_for_kfold(embed_opt='w2v'):
     print('[*] Done!!! -> load snippet data for K-fold cross validation\n')
     return X, y, kf, embedding_matrix
 
-# def get_embedding_matrix():
-#     return embedding_matrix
 
 def add_embedding_layer(embedding_matrix):
     print('[#] add embedding layer...')
@@ -504,6 +465,10 @@ def fit_and_result(model, tr_X, tr_y, te_X, te_y):
         early_stopping = EarlyStopping(monitor='loss', patience=10)
     else:
         early_stopping = None
+
+    sme = SMOTEENN(random_state=42)
+    tr_X, tr_y = sme.fit_resample(tr_X, tr_y)
+
     hist = model.fit(tr_X, tr_y, validation_split=VALID_SPLIT, epochs=EPOCH_SIZE,
                      batch_size=BATCH_SIZE, shuffle=False, callbacks=[early_stopping])
     print('[-] make result report')
@@ -516,7 +481,9 @@ def kfold_cross_validation(model, X, y, kf):
     result = list()
     early_stopping = EarlyStopping(monitor='loss', patience=10)
     for train, valid in kf.split(X, y):
-        model.fit(X[train], y[train], epochs=EPOCH_SIZE, batch_size=BATCH_SIZE,
+        sme = SMOTEENN(random_state=42)
+        tr_X, tr_y = sme.fit_resample(X[train], y[train])
+        model.fit(tr_X, tr_y, epochs=EPOCH_SIZE, batch_size=BATCH_SIZE,
                   shuffle=False, callbacks=[early_stopping])
         temp = '%.4f' % (model.evaluate(X[valid], y[valid], batch_size=BATCH_SIZE)[1])
         result.append(temp)

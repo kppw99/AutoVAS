@@ -4,18 +4,22 @@ Due to the advances in automated hacking and analysis technologies in recent yea
 However, existing methods target only some types of security vulnerabilities, or make limited use of source code to compile information, and few studies have been conducted on methods that represent source code in the embedding vector. Thus, this study proposes a deep learning-based automated vulnerability analysis system (AutoVAS) that uses a method to effectively represent source code in embedding vectors by using datasets from various projects in the National Vulnerability Database (NVD) and Software Assurance Reference Database (SARD).
 
 The proposed technique achieved an False Positive Rate (FPR) of 1.88\, an False Negative Rate (FNR) of 3.62\%, and an F1-score of 96.11\%, and detected nine vulnerabilities by applying the technique to seven open-source projects. Six vulnerabilities were known Common Vulnerabilities and Exposures (CVE), and three of them were not registered in the NVD but were silently patched by the vendor in the next version of their software. One of nine vulnerabilities was registered in the CVE.
+
 ## Prerequisite
+For NVD Dataset
 - [Python3](https://www.python.org/downloads/), [Java runtime 8](http://openjdk.java.net/install/), [sbt (Scala build tool)](https://www.scala-sbt.org/)
 - [Joern](https://github.com/ShiftLeftSecurity/joern) ([documents](https://joern.io/docs/))
 - cpgclientlib library for using cpg ($ pip install cpgclientlib)
+
+For SARD Dataset
+- [LLVM-Slicing](https://github.com/zhangyz/llvm-slicing)
+
+For Evaluation
 - HTMLTestRunner for making test reports ($ pip install HTMLTestRunner)
 - coverage for checking the test coverage ($ pip install coverage)
-## Requirements
-- Backward / Forward Slicing
-- Including Data Flow (DAF) / Data & Control Flow (CDF)
-- Slicing Unit: Function / Interprocedure
-- Program Point: API Function List (Need to define more detail)
-## To do list (Temporal Section)
-- Create Test Case for each function and user scenarios.
-- Apply Unittest Framework.
-- Develop slicing tool to pass test cases.
+
+## Description of directory
+- Dataset: Original source code of dataset, snippet files, tokenizing file  
+- Resource: Slicing criterion file
+- src: Main source code of AutoVAS. The src direction has model and preprocessing folder.
+- tool: Utility files for AutoVAS such as joern, llvm-slicing
