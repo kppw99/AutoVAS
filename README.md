@@ -25,3 +25,16 @@ The proposed technique achieved an False Positive Rate (FPR) of 1.88\, an False 
 - ***tool***: Utility files for AutoVAS such as joern, llvm-slicing
 
 ## Vulnerabilities
+As described in below table, we detect nine vulnerabilities. Among them, six vulnerabilities are already published in NVD and three vulnerabilities are not reported in NVD but they have been “silently” patched by the vendors when releasing newer version of the products. The other one vulnerability is received CVE ID (CVE-2019-15903).
+
+|Project|Val. Type|CVE|Version or Commit ID|
+|:---:|:---|:---|:---|
+|c-ares|heap buffer overflow|(known) CVE-2016-5180|v1.11.0|
+|Thunderbird|stack buffer overflow|(known) CVE-2015-4511|v38.0.1|
+|Xen|integer overflow|(known) CVE-2016-9104|v4.6.0|
+|Xen|infinite loop|(known) CVE-2016-4453|v4.7.4|
+|cJSON|NULL dereference|(known) CVE-2019-1010239|v1.7.8|
+|boringssl|heap use after free|silent-patch|894a47df2423f0d2b6be57e6d90f2bea88213382|
+|mpc|stack buffer overflow|silent-patch|b31e02e427f55d4ce69c33ed9936a1b396628440|
+|mpc|heap buffer overflow|silent-patch|b31e02e427f55d4ce69c33ed9936a1b396628440|
+|expat|heap buffer overflow|(unknown) CVE-2019-15903|v2.2.8|
