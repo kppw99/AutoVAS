@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4478131.svg)](https://doi.org/10.5281/zenodo.4478131)
 # AutoVAS: an Automated Vulnerability Analysis System with Deep Learning Approach 
 Due to the advances in automated hacking and analysis technologies in recent years, numerous software security vulnerabilities have been announced. Software vulnerabilities are increasing at a fast pace, whereas methods to analyze and cope with them depend on manual analyses, which involve a slow response. In recent years, studies concerning the prediction of vulnerabilities, or the detection of patterns of previous vulnerabilities have been conducted by applying deep learning algorithms in an automated vulnerability search based on source code.
  
