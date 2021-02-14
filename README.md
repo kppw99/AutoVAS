@@ -26,6 +26,7 @@
 
 ## Discovery of Vulnerabilities
 As described in below table, we detect eleven vulnerabilities. Among them, seven vulnerabilities are already registerd in CVE and three vulnerabilities are not reported in NVD but they have been “silently” patched by the vendors when releasing newer version of the products. The other one vulnerability is received CVE ID (CVE-2019-15903).
+
 ***Known Vulnerabilities***
 <img width="1056" alt="known_vul" src="https://user-images.githubusercontent.com/48042609/107858685-afd47780-6e78-11eb-81f7-6bafe7a24704.png">
 
