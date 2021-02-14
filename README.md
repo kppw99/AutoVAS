@@ -1,5 +1,6 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4478131.svg)](https://doi.org/10.5281/zenodo.4478131)
 # Automated Vulnerability Analysis System (AutoVAS)
+![Graphical_Abstract](https://user-images.githubusercontent.com/48042609/107875662-8fea9580-6f04-11eb-8c4f-a4357b51128e.png)
 <img width="898" alt="abstract" src="https://user-images.githubusercontent.com/48042609/107858579-47859600-6e78-11eb-945f-a5f9ef5c5d0a.png">
 
 ## Prerequisite
