@@ -33,6 +33,20 @@ As described in below table, we detect eleven vulnerabilities. Among them, seven
 ***Unknown Vulnerabilities***
 <img width="1059" alt="unknown_vul" src="https://user-images.githubusercontent.com/48042609/107858687-b531c200-6e78-11eb-9281-558696682595.png">
 
+## Publications
+```
+Jeon, S. H., & Kim, H. K. (2021). AutoVAS: An Automated Vulnerability Analysis System with a Deep Learning Approach. Computers & Security, 102308.
+
+@article{jeon2021autovas,
+  title={AutoVAS: An Automated Vulnerability Analysis System with a Deep Learning Approach},
+  author={Jeon, Sang Hoon and Kim, Huy Kang},
+  journal={Computers \& Security},
+  pages={102308},
+  year={2021},
+  publisher={Elsevier}
+}
+```
+
 ## About
 This program is authored and maintained by **Sanghoon(Kevin) Jeon**.
 > Email: kppw99@gmail.com
