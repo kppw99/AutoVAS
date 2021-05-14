@@ -39,7 +39,7 @@ Jeon, S. H., & Kim, H. K. (2021). AutoVAS: An Automated Vulnerability Analysis S
 
 @article{jeon2021autovas,
   title={AutoVAS: An Automated Vulnerability Analysis System with a Deep Learning Approach},
-  author={Jeon, Sang Hoon and Kim, Huy Kang},
+  author={Jeon, Sanghoon and Kim, Huy Kang},
   journal={Computers \& Security},
   pages={102308},
   year={2021},
