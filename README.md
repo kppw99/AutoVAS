@@ -35,7 +35,7 @@ As described in below table, we detect eleven vulnerabilities. Among them, seven
 
 ## Publications
 ```
-Jeon, S. H., & Kim, H. K. (2021). AutoVAS: An Automated Vulnerability Analysis System with a Deep Learning Approach. Computers & Security, 102308.
+Jeon, S., & Kim, H. K. (2021). AutoVAS: An Automated Vulnerability Analysis System with a Deep Learning Approach. Computers & Security, 102308.
 
 @article{jeon2021autovas,
   title={AutoVAS: An Automated Vulnerability Analysis System with a Deep Learning Approach},
